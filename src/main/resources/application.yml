@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    password: admin
+    username: root
+    url: jdbc:mysql:///time_tracker
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
