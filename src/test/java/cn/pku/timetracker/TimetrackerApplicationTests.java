@@ -5,6 +5,8 @@ import cn.pku.timetracker.dao.TaskDao;
 import cn.pku.timetracker.dao.UserDao;
 import cn.pku.timetracker.entity.Task;
 import cn.pku.timetracker.entity.User;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,12 @@ class TimetrackerApplicationTests {
     void contextLoads() {
         String Id = tagDao.getReferenceById("1").getUserId();
         System.out.println(userDao.getReferenceById(Id).toString());
+    }
+
+    @Test
+    public void createJwt(){
+        JwtBuilder jwtBuilder = Jwts.builder();
+
     }
 
 }

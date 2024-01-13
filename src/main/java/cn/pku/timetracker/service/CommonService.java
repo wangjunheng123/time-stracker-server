@@ -1,5 +1,5 @@
-package cn.pku.timetracker.rest;
+package cn.pku.timetracker.service;
 
-public class CommonTask {
+public class CommonService {
 
 }

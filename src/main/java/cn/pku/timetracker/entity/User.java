@@ -31,4 +31,13 @@ public class User {
     @Column(name = "nikname")
     private String nikname;
 
+    /*
+    记录登陆失败次数
+     */
+    @Column(name = "count")
+    private Integer count;
+
+    @Column(name = "last_Login_fail_time", columnDefinition = "int default 0")
+    private LocalDateTime lastLoginFailTime;
+
 }

@@ -8,3 +8,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+
+server:
+  port: 8888
+  servlet:
+    context-path: /time-tracker
+#    session????
+#    session:
+#      timeout: -1

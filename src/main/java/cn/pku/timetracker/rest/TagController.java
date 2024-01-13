@@ -1,2 +1,4 @@
-package cn.pku.timetracker.rest;public class TagController {
+package cn.pku.timetracker.rest;
+
+public class TagController {
 }

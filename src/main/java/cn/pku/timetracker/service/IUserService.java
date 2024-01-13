@@ -1,4 +1,12 @@
 package cn.pku.timetracker.service;
 
-public class UserService {
+import cn.pku.timetracker.entity.Result;
+import cn.pku.timetracker.entity.dto.LoginDTO;
+
+
+public interface IUserService {
+
+
+    public Result Login(LoginDTO loginDTO);
+
 }

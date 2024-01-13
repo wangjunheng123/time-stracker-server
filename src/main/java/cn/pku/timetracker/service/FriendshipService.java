@@ -1,4 +1,4 @@
-package cn.pku.timetracker.rest;
+package cn.pku.timetracker.service;
 
-public class FriendshipController {
+public class FriendshipService {
 }
