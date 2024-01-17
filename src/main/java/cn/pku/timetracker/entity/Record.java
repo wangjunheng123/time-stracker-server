@@ -12,8 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "task")
-public class Task extends BaseEntity<Task> implements Serializable {
+@Table(name = "record")
+public class Record extends BaseEntity<Record> implements Serializable {
     private static final long serialVersionUID = -1459660400121009230L;
 
     @Column(name = "task_name", nullable = false)
@@ -31,8 +31,8 @@ public class Task extends BaseEntity<Task> implements Serializable {
     @Column(name = "priority")
     private Integer priority;
 
-    @Column(name = "tag_id")
-    private String tagId;
+    @Column(name = "task_id")
+    private String taskId;
 
     @Column(name = "duration")
     private Integer duration;

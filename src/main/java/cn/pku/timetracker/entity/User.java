@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,11 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "user")
-public class User {
-    @Id
-    @Column(name = "user_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String userId;
+public class User extends BaseEntity<User> implements Serializable {
+    private static final long serialVersionUID = -1459660400121009230L;
 
     @Column(name = "username", nullable = false)
     private String username;

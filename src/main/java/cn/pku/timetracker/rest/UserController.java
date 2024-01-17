@@ -3,6 +3,8 @@ package cn.pku.timetracker.rest;
 import cn.pku.timetracker.entity.Const;
 import cn.pku.timetracker.entity.Result;
 import cn.pku.timetracker.entity.dto.LoginDTO;
+import cn.pku.timetracker.entity.dto.RegisterDTO;
+import cn.pku.timetracker.security.AuthAccess;
 import cn.pku.timetracker.service.IUserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +23,16 @@ public class UserController {
     IUserService userService;
 
     @PostMapping("/login")
+    @AuthAccess
     public Result userLogin(@RequestBody LoginDTO loginDTO, HttpSession session){
         Result result = userService.Login(loginDTO);
-
         return result;
+    }
+
+    @PostMapping("/register")
+    @AuthAccess
+    public Result userRegister(@RequestBody RegisterDTO registerDTO, HttpSession session){
+        return userService.register(registerDTO);
     }
 
 }

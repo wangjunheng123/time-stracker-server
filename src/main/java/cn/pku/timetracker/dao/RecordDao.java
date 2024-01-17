@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface TaskDao extends JpaRepository<Record,String> {
+public interface RecordDao extends JpaRepository<Record,String> {
     List<Record> findByUserId(String userId);
-    List<Record> findByTagId(String tagId);
+    List<Record> findByTaskId(String taskId);
 
 }

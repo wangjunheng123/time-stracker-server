@@ -9,6 +9,9 @@ public enum ResultCodeEnum {
     Not_Exist_Fail(2,"账号不存在"),
     Password_error_Fail(3,"密码错误"),
     Account_Locked_Fail(4,"账号被锁定，稍后尝试"),
+    Email_Null_Value_Fail(5,"账号密码不能为空"),
+    Email_Value_Fail(6,"邮箱已经创建"),
+    Username_Value_Fail(7,"用户名存在"),
     No_Login_Fail(401, "请登录");
 
     private Boolean success;

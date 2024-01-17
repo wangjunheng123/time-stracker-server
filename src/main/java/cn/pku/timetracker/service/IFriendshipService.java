@@ -1,4 +1,4 @@
 package cn.pku.timetracker.service;
 
-public interface FriendshipService {
+public interface IFriendshipService {
 }

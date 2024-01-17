@@ -5,7 +5,6 @@ import cn.pku.timetracker.entity.User;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import jakarta.annotation.PostConstruct;
-import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -15,10 +14,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
 
 @Component
 public class TokenUtils {
-
 
     private static UserDao staticUserDao;
 
@@ -47,13 +46,13 @@ public class TokenUtils {
          *只要当前请求有token我就可以通过token去拿到当前请求的用户的所有的信息（是从数据库里面查出来的 ）
          * @return user对象
          */
-    public static User getCurrentUser() {
+    public static Optional<User> getCurrentUser() {
         try {
             HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
             String token = request.getHeader("token");
             if (token == null || token == "") {
                 String userId = JWT.decode(token).getAudience().get(0);
-                return staticUserDao.findByUserId(userId);
+                return staticUserDao.findById(userId);
             }
         } catch (Exception e) {
             return null;

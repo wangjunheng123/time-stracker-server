@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import java.util.Optional;
+
 public class JwtInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -24,7 +26,10 @@ public class JwtInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
+
+
         String token = request.getHeader("token");
+
         if (token == null || token == "") {
             token = request.getParameter("token");
         }
@@ -47,11 +52,12 @@ public class JwtInterceptor implements HandlerInterceptor {
         } catch (JWTDecodeException j) {
             throw new ServiceException(401, "请登录");
         }
-        User user = userDao.findByUserId(userId);
+        Optional<User> user = userDao.findById(userId);
         if (user == null) {
             throw new ServiceException(401, "请登录");
         }
-        JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user.getPassword())).build();
+        User user1 = user.get();
+        JWTVerifier jwtVerifier = JWT.require(Algorithm.HMAC256(user1.getPassword())).build();
         try {
             jwtVerifier.verify(token); // 验证token
         } catch (JWTVerificationException e) {

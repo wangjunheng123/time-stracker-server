@@ -1,4 +1,4 @@
 package cn.pku.timetracker.service;
 
-public interface TaskSetService {
+public interface ITaskSetService {
 }

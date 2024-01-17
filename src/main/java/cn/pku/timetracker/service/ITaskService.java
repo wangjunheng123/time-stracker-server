@@ -1,5 +1,5 @@
 package cn.pku.timetracker.service;
 
-public class CommonService {
+public interface ITaskService {
 
 }

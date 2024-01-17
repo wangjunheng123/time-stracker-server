@@ -1,36 +1,53 @@
 package cn.pku.timetracker;
 
-import cn.pku.timetracker.dao.TagDao;
-import cn.pku.timetracker.dao.TaskDao;
+import cn.pku.timetracker.dao.TaskSetDao;
 import cn.pku.timetracker.dao.UserDao;
-import cn.pku.timetracker.entity.Task;
+import cn.pku.timetracker.entity.Result;
 import cn.pku.timetracker.entity.User;
-import io.jsonwebtoken.JwtBuilder;
-import io.jsonwebtoken.Jwts;
+//import io.jsonwebtoken.JwtBuilder;
+//import io.jsonwebtoken.Jwts;
+import cn.pku.timetracker.entity.dto.LoginDTO;
+import cn.pku.timetracker.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class TimetrackerApplicationTests {
 
-    @Autowired
-    private TagDao tagDao;
+//    @Autowired
+//    private TaskSetDao taskSetDao;
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private IUserService userService;
+//    @Autowired
+//    private TagDao tagDao;
+
     @Transactional
+    @Rollback(false)
     @Test
     void contextLoads() {
-        String Id = tagDao.getReferenceById("1").getUserId();
-        System.out.println(userDao.getReferenceById(Id).toString());
+        User user = new User();
+        user.setEmail("123@qq.com");
+        user.setUsername("cedric");
+        user.setPassword("wjhwjh");
+        userDao.save(user);
+        System.out.println(user);
     }
 
     @Test
-    public void createJwt(){
-        JwtBuilder jwtBuilder = Jwts.builder();
+    public void Login(){
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setUsername("cedric");
+        loginDTO.setPassword("wjhwjh");
+        Result result = userService.Login(loginDTO);
 
+        System.out.println(result);
     }
 
 }
